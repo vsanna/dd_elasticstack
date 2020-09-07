@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <xi:include href="log4j2-properties.xml"/>
+
+    <Appenders>
+        <Kafka name="KafkaInfo" topic="applicationlog">
+            <PatternLayout pattern="${JSON_LOG_PATTERN}" alwaysWriteExceptions="false"/>
+            <Property name="bootstrap.servers">localhost:29092</Property>
+            <Property name="timeout.ms">3000</Property>
+        </Kafka>
+
+        <Async name="AsyncKafka" blocking="false" shutdownTimeout="25000">
+            <AppenderRef ref="KafkaInfo"/>
+        </Async>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AsyncKafka"/>
+        </Root>
+    </Loggers>
+</Configuration>

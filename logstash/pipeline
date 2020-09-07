@@ -1,0 +1,26 @@
+input {
+    kafka {
+        #Kafka broker serverのIPアドレスを記載する。
+        bootstrap_servers => "kafka:9092"
+        #Consumerが取得するtopic名称を記載する。
+        topics => ["applicationlog"]
+    }
+}
+
+filter {
+    # https://www.elastic.co/guide/en/logstash/current/plugins-filters-json.html
+    json {
+        source => "message"
+    }
+}
+
+output {
+    #elasticsearchのIPアドレスを記載する。
+    elasticsearch {
+        hosts => ["elasticsearch:9200"]
+        index => "logstash-%{+YYYY.MM.dd}"
+    }
+    stdout {
+        codec => rubydebug
+    }
+}

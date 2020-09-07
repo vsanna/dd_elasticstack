@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <property name="APPLICATION_NAME">sample_app</property>
+    <Property name="CONSOLE_LOG_PATTERN">[%T] %-40.40logger{39}:%L %-5level %X{message}%n</Property>
+    <Property name="CONSOLE_LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %-40.40logger{39}:%L - %m%n</Property>
+    <Property name="JSON_LOG_PATTERN">{"time": "%d{ISO8601}", "level": "%-5level", "service": "${env:APPLICATION_NAME}", "class": "%-40.40logger{39}:%L", "profile": "${sys:spring.profiles.active:-default}", "requestId" : "sample_request_id", "traceId": "sample_trace_id", "spanId": "sample_span_id", "exception": "%enc{%maxLen{%ex}{204800}}{JSON}", "message": "%enc{%maxLen{%m}{204800}}{JSON}", "uuid": "%X{uuid}"}%n</Property>
+</properties>
