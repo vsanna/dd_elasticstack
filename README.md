@@ -1,3 +1,8 @@
+This project is sandbox for ElasticStack.
+It also includes one java application and kafka stack as log generator.
+
+
+
 ## how to start
 ```bash
 # 1. start kafka and ElasticStack
