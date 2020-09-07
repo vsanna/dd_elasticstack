@@ -1,3 +1,14 @@
+## how to start
+```bash
+# 1. start kafka and ElasticStack
+$ docker-compose up -d
+
+# 2. start java application
+
+# 3. open kibana
+$ open http://localhost:5601
+```
+
 ## system components
 
 - java application(sample_app)
